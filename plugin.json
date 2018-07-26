@@ -1,0 +1,8 @@
+    {
+        "name"              :"BeezUP",
+        "description"       :"Beezup export module for PlenyMarkets",
+        "namespace"         :"BeezUP",
+        "author"            :"BeezUP",
+        "type"              :"template",
+        "serviceProvider"   :null
+    }
