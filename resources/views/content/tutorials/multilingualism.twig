@@ -1,0 +1,158 @@
+{% extends 'PlentyPluginShowcase::templates.ExamplePage' %}
+
+{% block Content %}
+
+<h1 id="introduction">Multilingualism</h1>
+<div class="api-docs-basics">
+    <p>
+        This tutorial guides you through the steps necessary to make <b>language-dependent texts</b> of your plugin, such as input labels or tooltips of the plugin configuration, editable in the plentymarkets <b>multilingualism</b> interface.
+        The multilingualism interface displays the language-dependent texts of your plugin in a bilingual view, in which users can edit and translate them to display them in various languages in their online store.
+        In the multilingualism interface the language-dependent texts are organised in sections, so that users can easily find the texts they want to edit.
+        In order to make texts of your plugin editable in the multilingualism interface, your plugin needs to include the files <b>Template.properties</b>, <b>Config.properties</b> and <b>translation.json</b>. Your folder structure should look like this:
+    </p>
+</div>
+
+<!-- Folder structure -->
+<div class="code-container">
+<pre class="prettyprint lang-plain grey-back">
+MyPlugin/
+    ├── resources/
+    │   └── lang/
+    |       ├── en/
+    │       |   └── config.properties   // contains the section names
+    │       |   └── template.properties // contains the translation keys and texts grouped according to prefixes
+    │       |
+    │       └── de/
+    |           └── config.properties   // contains the section names
+    |           └── template.properties // contains the translation keys and texts grouped according to prefixes
+    |
+    |
+    └── translation.json // contains sections keys, section prefixes and untranslatable keys
+
+</pre>
+</div>
+<!-- Folder structure end -->
+
+<h2 id="setup-ide">Step 1: Creating the Template.properties file</h2>
+<div class="api-docs-basics">
+    <p>
+        The Template.properties file contains all of the language-dependent translation keys of your plugin. You save the Template.properties file in a sub-folder of your <b>resources/lang</b> folde, e.g. <b>resources/lang/en</b> for texts in English.
+        Within the Template.properties file, you organise the translation keys into sections according to prefixes. For instance, you could group all text elements that pertain to the contact page by adding <b>contact</b> as a prefix to the language keys:
+
+          <!-- Code example -->
+          <div class="route-container">
+          <code>MyPlugin/resources/lang/en/Template.properties</code>
+          </div>
+          <div class="code-container">
+          <pre class="prettyprint lang-js grey-back linenums code-example">
+            ; contact - Contact page
+            contact = "Contact"
+            contactName = "Name"
+            contactMail = "Email"
+            contactMessage = "Message"
+            contactShopMessage = "You have a question? Simply fill out the form and we will respond to your request as soon as possible."
+          </pre>
+          <button type="button" class="btn btn-primary pull-right toggle-code-example">Expand</button>
+          </div>
+          <!-- Code example end -->
+
+        Organise other sections of your plugin, such as <b>address</b>, <b>notifications</b> or <b>terms and conditions</b>, analogously and assign distinct prefixes to the keys. While it is not mandatory, you should ideally sort the keys alphabetically.
+        The translation.json file accesses the prefixes contained in the Template.properties file and yields the data that is required for the multilingualism interface. How you organise the translation keys is up to you and will differ from plugin to plugin. In the next step, you will create a Config.properties file, which determines the names of the sections, into which your translation keys have been organised.
+    </p>
+</div>
+
+<h2 id="setup-git">Step 2: Creating the Config.properties</h2>
+<div class="api-docs-basics">
+    <p>
+        The Config.properties file contains the keys and texts for the section names of your plugin and is located in the relevant sub-folder of the <b>resource/lang</b> folder. You should try to label your sections unambiguously, so that users can clearly identify which part of your plugin the section names refer to. The section names in the Config.properties cannot be edited in the multilingualism interface.
+
+        <!-- Code example -->
+        <div class="route-container">
+        <code>MyPlugin/resources/lang/en/Config.properties</code>
+        </div>
+        <div class="code-container">
+        <pre class="prettyprint lang-js grey-back linenums code-example">
+          ; sections
+          address = "Address"
+          contact = "Contact"
+          notifications = "Notifications"
+          termsAndConditions = "Terms and conditions"
+        </pre>
+        <button type="button" class="btn btn-primary pull-right toggle-code-example">Expand</button>
+        </div>
+        <!-- Code example end -->
+    </p>
+</div>
+
+<h2 id="setup-git">Step 3: Creating the translation.json</h2>
+<div class="api-docs-basics">
+    <p>
+        The <b>translation.json</b> file brings together the elements from the Template.properties and Config.properties files. It lists the sections, whose names are adopted from the Config.properties file, and the prefixes, along which the translation keys are organised in the Template.properties file.
+
+        <!-- Code example -->
+        <div class="route-container">
+        <code>MyPlugin/translation.json</code>
+        </div>
+        <div class="code-container">
+        <pre class="prettyprint lang-js grey-back linenums code-example">
+        {
+            "sections":
+            [
+              {
+                "name": "Config.address",
+                "prefix": "address"
+              },
+              {
+                "name": "Config.contact",
+                "prefix": "contact"
+              },
+              {
+                "name": "Config.notifications",
+                "prefix": "notifications"
+              },
+              {
+                "name": "Config.termsAndConditions"
+                "prefix": "termsAndConditions"
+              }
+            ]
+        }
+        </pre>
+        <button type="button" class="btn btn-primary pull-right toggle-code-example">Expand</button>
+        </div>
+        <!-- Code example end -->
+
+    </p>
+</div>
+
+<h2 id="setup-git">Step 4: Including non-translatable keys in the translation.json</h2>
+<div class="api-docs-basics">
+    <p>
+      If you want to prevent users from editing and translating certain text elements of your plugin, such as brand names, you can include a separate array in the translation.json file, in which you list the keys. These keys will appear in the multilingualism interface, but users will not be able to interact with the text element.
+
+              <!-- Code example -->
+              <div class="route-container">
+              <code>MyPlugin/translation.json</code>
+              </div>
+              <div class="code-container">
+              <pre class="prettyprint lang-js grey-back linenums code-example">
+              {
+                  "sections":
+                  [
+                    {
+                      "name": "Config.contact",
+                      "prefix": "contact"
+                    }
+                  ],
+                  "nonTranslatableKeys":[
+                    "brandName1",
+                    "brandName2"
+                  ]
+              }
+              </pre>
+              <button type="button" class="btn btn-primary pull-right toggle-code-example">Expand</button>
+              </div>
+              <!-- Code example end -->
+    </p>
+</div>
+
+  {% endblock %}

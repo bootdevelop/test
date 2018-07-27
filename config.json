@@ -1,0 +1,30 @@
+[
+	{
+		"key": "is_header_bold",
+		"label": "Titleheader in boldface?",
+		"type": "dropdown",
+		"possibleValues": {
+			"0":"No",
+			"1":"Yes"
+		},
+		"default":"0"
+	},
+	{
+		"key": "custom_header",
+		"label":"Custom title",
+		"type": "text",
+		"default":"Custom title"
+	},
+	{
+		"key": "discourse_api_key",
+		"label":"Discourse ApiKey",
+		"type": "password",
+		"default":""
+	},
+	{
+		"key": "discourse_api_username",
+		"label":"Discourse ApiUsername",
+		"type": "password",
+		"default":""
+	}
+]

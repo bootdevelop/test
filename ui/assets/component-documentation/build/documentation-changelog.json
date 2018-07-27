@@ -1,0 +1,18 @@
+{
+  "information": {
+    "name": "changelog",
+    "version": "1.0",
+    "terra-components-version": "2.1.64-zlk",
+    "change-date":"29-3-2018"
+  },
+  "new-release-changelog":
+  [
+    {
+      "component-name":"terra-node-tree",
+      "date": "29-3-2018"
+    }
+  ],
+  "changelog":
+  [
+  ]
+}

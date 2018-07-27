@@ -1,8 +1,11 @@
-    {
-        "name"              :"BeezUP",
-        "description"       :"Beezup export module for PlenyMarkets",
-        "namespace"         :"BeezUP",
-        "author"            :"BeezUP",
-        "type"              :"backend",
-        "serviceProvider"   :"BeezUP\\Providers\\BeezUPServiceProvider.php"
-    }
+{
+  "version"         : "0.0.1",
+  "name"            : "BeezUP",
+  "description"     :"Beezup export module for PlenyMarkets",
+  "namespace"       : "BeezUP",
+  "author"          : "BeezUP",
+  "keywords"        :["BeezUP", "marketplaces", "plugins"],
+  "type"            :"template",
+  "require"         :[],
+  "serviceProvider" : "BeezUP\\Providers\\BeezUPServiceProvider"
+}

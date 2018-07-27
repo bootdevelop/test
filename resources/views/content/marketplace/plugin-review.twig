@@ -1,0 +1,132 @@
+{% extends 'PlentyPluginShowcase::templates.ExamplePage' %}
+
+{% block Content %}
+
+    <h1 id="guidelines">plentyMarketplace review guidelines</h1>
+
+    <div class="api-docs-basics">
+        <p>
+            The plentyMarketplace is a huge success. We currently have more than 100 plugins developed by plentymarkets and a dozen providers (both steadily growing!). With such a huge portfolio, certain challenges arise. To meet these challenges, this document provides guidelines for code review, user guide experience and other important aspects of plugin and tool content in addition to the basic <a href="/marketplace/plugin-requirements">plugin requirements</a> and <a href="/marketplace/plugin-upload">upload guide</a>. Be advised that the plentymarkets reviewers will check any software thoroughly to make sure these standards are met.
+        </p>
+
+        <p>
+            The following offers a broad overview of the dos and don’ts of plugin programming for the plentyMarketplace. Please note that this is by no means an exhaustive list, rather a living document of pitfalls we are aware of and wish you’d rather avoid. This document can and will be amended over time as soon as new realisations are made. If you have any questions or input regarding this matter, feel free to tell us in our <a href="https://forum.plentymarkets.com/c/plenty-marketplace" target="_blank">forum</a>.
+        </p>
+    </div>
+
+    <h2 id="criteria-plentymarketplace">Review criteria for the plentyMarketplace</h2>
+
+    <div class="api-docs-basics">
+        <p>
+            The plugin name is limited to two lines of text in standard resolutions and responsive. No marketing of any kind is allowed, just the name of the plugin.
+        </p>
+        <p>
+            The short description is exactly that – a brief summary of the basic functions of the plugin. Some marketing is allowed, but this should not be an advertisement with no or little information about what the plugin actually does.
+        </p>
+        <p>
+            The version number must use <a href="https://semver.org/" target="_blank">semantic versioning</a> and has to match the changelog at all times.
+        </p>
+        <p>
+            The changelog must match the version number and offer the date of the upload. Its changes are divided into the following categories:
+            <ul>
+                <li>Changed</li>
+                <li>Added</li>
+                <li>Removed</li>
+                <li>Fixed</li>
+                <li>ToDo (for necessary actions to perform in the new version)</li>
+            </ul>
+        </p>
+        <p>
+            The plugin must provide a suitable category in the <code>plugin.json</code>.
+        </p>
+        <p>
+            The support tab must provide at least basic contact data. A plentymarkets forum category is merely an additional option and does not suffice as contact data.
+        </p>
+    </div>
+
+    <h2 id="criteria-plentymarkets">Review criteria for the plentymarkets software</h2>
+
+    <div class="api-docs-basics">
+        <p>
+            <strong>Back end criteria:</strong>
+        </p>
+        <p>
+            The look and feel of the plugin back end have to harmonise with the overall plentymarkets style.
+        </p>
+        <p>
+            Plugins have to use the <a href="/terra-doc/components">terra components</a> in their back end UI.
+        </p>
+        <p>
+            The entry point of the plugin has to match the category and use of the plugin. Any deviation has to be explained in writing.
+        </p>
+        <p>
+            Language options for English and German must be provided for all elements.
+        </p>
+        <p>
+            <strong>Code criteria:</strong>
+        </p>
+        <p>
+            The code must not produce any loops.
+        </p>
+        <p>
+            Log entries must be proportional to the code volume.
+        </p>
+    </div>
+
+    <h2 id="criteria-category">Review criteria by category</h2>
+
+    <div class="api-docs-basics">
+        <p>
+            <strong>General:</strong>
+        </p>
+        <p>
+            For performance reasons, Dependency Injection must be used, especially with any logic loading or processing data repeatedly.
+        </p>
+        <p>
+            When using Dependency Injection, it must be impossible for classes to use each other. This results in a loop not registered by the code check.
+        </p>
+        <p>
+            New plugins must not be based on deprecated technologies (e.g., ItemDataLayer).
+        </p>
+        <p>
+            If the plugin offers any kind of settings, they must be combined into a single menu.
+        </p>
+        <p>
+            If the logger is used, it must be used correctly to avoid filling the ElasticSearch server with data the user cannot analyse.
+        </p>
+        <p>
+            <strong>Payment:</strong>
+        </p>
+        <p>
+            The payment method ID must be dynamically loaded using PaymentMethodRepository.
+        </p>
+        <p>
+            Payment plugins must not create payments for other payment methods than the ones used by them. Events have to check if this is the case.
+        </p>
+        <p>
+            All routes must begin with <code>payment/pluginName/</code> (in lowerCamelCase).
+        </p>
+        <p>
+            Any routes for use within the plugin itself must be secured by the middleware.
+        </p>
+        <p>
+            <strong>Fulfillment:</strong>
+        </p>
+        <p>
+            Saving delivery and export documents must use <a href="/api-doc/Document">DocumentRepository</a>.
+        </p>
+        <p>
+            <strong>Marketplaces, price comparison websites, ElasticExport formats:</strong>
+        </p>
+        <p>
+            There must be an option to deactivate crons for data exports and imports at least in the plugin settings.
+        </p>
+        <p>
+            <strong>Theme:</strong>
+        </p>
+        <p>
+            Theme plugins must display dependencies to Ceres/IO versions to reduce support enquiries.
+        </p>
+    </div>
+
+{% endblock %}

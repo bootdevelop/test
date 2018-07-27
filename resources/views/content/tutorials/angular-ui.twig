@@ -1,0 +1,128 @@
+{% extends 'PlentyPluginShowcase::templates.ExamplePage' %}
+
+{% block Content %}
+
+    <h1 id="introduction">How to start an Angular UI project</h1>
+    <div class="api-docs-basics">
+        <p>
+            This tutorial will show you how to start an Angular UI project for your plugin.
+            The instructions given on this page require that you have
+            <a href="https://developers.plentymarkets.com/dev-doc/basics#ide-support" target="_blank">established your IDE</a> and have
+            <a href="https://developers.plentymarkets.com/tutorials/helloworld#introduction" target="_blank">created your first plugins</a>.
+            To start, download the basic plugin below or use your angular Ui project form the
+            <a href="https://developers.plentymarkets.com/tutorials/angular-plugin" target="_blank">My first angular plugin tutorial</a>.
+        </p>
+    </div>
+
+    <!-- GitHub button -->
+    <div class="connect">
+        <div class="btn btn-primary btn-block btn-github" title="Clone or download this plentymarkets plugin on GitHub.">
+            <a href="https://github.com/plentymarkets/plugin-terra-basic"
+               target="_blank" role="button">
+                <img class="img-responsive pull-left" src="{{ plugin_path('PlentyPluginShowcase') }}/images/github-logo.png"  style="width: 40px;"/>
+                <span>Download on GitHub</span>
+            </a>
+        </div>
+    </div>
+    <!-- GitHub button end -->
+
+    <h2 id="setup-nodejs">Step 1: Setting up Node.js</h2>
+    <div class="api-docs-basics">
+        <p>
+            You need <strong>Node.js</strong> to compile the project. Install the LTS version
+            <a href="https://nodejs.org/en/download/" target="_blank">here</a>.
+            Once <strong>Node.js</strong> is ready , proceed as follows.
+        </p>
+    </div>
+
+    <h3 id="install-dependencies">Compiling the project</h3>
+    <div class="api-docs-basics">
+        <ol>
+            <li>
+                Use <code>npm install</code> in the directory of your project.<br />
+                &rarr; All dependencies of the package.json file are installed.
+            </li>
+            <li>
+                Use <code>npm start</code>.<br />
+                &rarr; The project is compiled and shown in your browser on <strong>localhost:3002</strong>.
+            </li>
+        </ol>
+    </div>
+    <div class="api-docs-basics">
+        <p>
+            You can change the port in the file <strong>/plugin-terra-basic/config/webpack.dev.js</strong>.
+        </p>
+    </div>
+
+    <h2 id="create-environment">Step 2: Creating the php environment</h2>
+    <div class="api-docs-basics">
+        <p>
+            To set up a second project for the php part of development,
+            follow the instructions in <a href="https://developers.plentymarkets.com/tutorials/backendview" target="_blank">this guide</a>.
+            To use the UI part in your plugin, proceed as follows.
+        </p>
+    </div>
+    <h3 id="apply-ui">Employing the UI part in the php environment</h3>
+    <div class="api-docs-basics">
+        <ol>
+            <li>
+                Compile the UI project with <code>npm run build</code>.<br />
+                &rarr; The <code>dist</code> directory is created with the compiled files in it.
+            </li>
+            <li>
+                Copy and paste the content of the <code>dist</code> directory to your plugin project's <code>ui</code> directory.
+            </li>
+            <li>
+                Set up the <code>ui.json</code> file with actions for the different views.
+            </li>
+        </ol>
+    </div>
+
+    <div class="api-docs-basics">
+        <p>
+            For being able to test your copied UI within the plugin, you can install the extension
+            <a href="https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi?hl=en"
+               target="_blank">Allow-Control-Allow-Origin</a> in the Chrome browser.<br />
+            Alternatively, you can use
+            <a href="https://developers.plentymarkets.com/dev-doc/plentydrive" target="_blank">plentyDrive</a>
+            to test the UI in any browser.
+        </p>
+    </div>
+
+    <h3 id="example-uijson">Creating the ui.json</h3>
+
+    <!-- Code example -->
+    <div class="route-container">
+        <code>MyPlugin/ui.json</code>
+    </div>
+    <div class="code-container">
+<pre class="prettyprint lang-js grey-back linenums code-example">
+{
+ "defaultEntryPoint": "index.html",
+ "namespace": "MyPlugin",
+ "menuEntries": [
+   {
+     "label": "Settings",
+     "menu": "settings/orders/myplugin",
+     "urlKey": "basic-settings",
+     "entryPoint": "index.html?action=basic-settings"
+   },
+   {
+     "label": "Address settings",
+     "menu": "settings/orders/myplugin",
+     "urlKey": "address-settings",
+     "entryPoint": "index.html?action=address-settings"
+   },
+   {
+     "label": "Shipping settings",
+     "menu": "settings/orders/myplugin",
+     "urlKey": "shipping-settings",
+     "entryPoint": "index.html?action=shipping-settings"
+   }
+ ]
+}
+</pre>
+        <button type="button" class="btn btn-primary pull-right toggle-code-example">Expand</button>
+    </div>
+    <!-- Code example end -->
+{% endblock %}

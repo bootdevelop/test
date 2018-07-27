@@ -1,0 +1,43 @@
+<h2 id="adding-content-categories">Adding content categories in the Ceres navigation</h2>
+
+<div class="api-docs-basics">
+
+<p>
+    By default, content categories are not displayed in the navigation bar of Ceres. If you want to display a category of the <b>Content</b> type in the navigation bar of the online store, you have to change a parameter in one of the Twig templates. You can do this in your own theme or fork of Ceres, or in the plentymarkets back end when using Ceres from plentyMarketplace.
+</p>
+    <ol>
+        <li>
+            Go to <b>Plugins » Plugin overview</b>.
+        </li>
+        <li>Click on <b>Ceres</b>.<br />
+            → The plugin will open.
+        </li>
+        <li>
+            Go to <b>resources/views/PageDesign/PageDesign.twig</b>.
+        </li>
+        <li>Search for the line of code <code><span>{</span>% set categories = services.category.getNavigationTree("item", lang, 6) %}</code>.</li>
+        <li>Replace the line of code with <code><span>{</span>% set categories = services.category.getNavigationTree("all", lang, 6) %}</code>.</li>
+        <li><b>Save</b> the settings.<br />
+            → All category types can now be used in the navigation bar of the online store.
+        </li>
+    </ol>
+</div>
+
+<div class="alert alert-warning">
+    <strong>Important:</strong> Note that these changes will be overwritten when updating the plugin to a higher version. Repeat the steps above in order to make all category types available again.
+</div>
+
+<div class="api-docs-basics">
+    <p>
+        After enabling the other category types in the Ceres online store, <a href="https://knowledge.plentymarkets.com/en/item/managing-categories#_creating_a_category" target="_blank">create a category</a> of the <b>Content</b> type. The following steps must be taken into account:
+    </p>
+    <ul>
+        <li>Activate this category for your client.</li>
+        <li>Select <b>Display</b> in the <b>In link list</b> drop-down to display the category in the navigation.</li>
+        <li>Open the <b>Template</b> tab and enter the content that you want to display in the online store.<br />
+        → You can enter HTML and TWIG code in this tab.</li>
+        <li>Save everything.<br />
+            → When content is entered in the <b>Template</b> tab of a category, the <b>CategoryTemplates</b> plugin is created automatically. This plugin contains the HTML/TWIG code of your category.</li>
+        <li>Simply activate this plugin and provision the plugin set by clicking <b>Save & publish plugins</b>. After a short period of time, the category will be visible in the navigation.</li>
+    </ul>
+</div>
