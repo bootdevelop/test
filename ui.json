@@ -3,9 +3,9 @@
   "namespace": "BeezUP",
   "menuEntries": [
     {
-      "label": "Hello World",
-      "menu": "start",
-      "urlKey": "hello-world",
+      "label": "BeezUP",
+      "menu": "settings/orders",
+      "urlKey": "beezup-om",
       "entryPoint": "index.html"
     }
   ]
