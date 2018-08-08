@@ -4,7 +4,7 @@
   "menuEntries": [
     {
       "label": "BeezUP",
-      "menu": "settings/orders",
+      "menu": "settings/orders/Plugins",
       "urlKey": "beezup-om",
       "entryPoint": "index.html"
     }
