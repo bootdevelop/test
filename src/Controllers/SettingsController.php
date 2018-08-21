@@ -17,7 +17,7 @@ class SettingsController extends Controller
 {
 
 
-    public function loadSettings(Twig $twig) :string {
+    public function loadSettings(Twig $twig) {
         return $twig->render("BeezUP::Index");
     }
 
