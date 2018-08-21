@@ -28,8 +28,8 @@ class SettingsController extends Controller
 //        return $response->json(array("test" => 1), 200);
 //    }
 
-    public function loadSettings(Twig $twig) {
-        $twig->render("BeezUP.content.test");
+    public function loadSettings(Twig $twig) :string {
+        $twig->render("BeezUP::Index");
     }
 
 }
