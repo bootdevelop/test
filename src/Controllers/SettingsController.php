@@ -14,18 +14,22 @@ use Plenty\Plugin\Application;
 use Plenty\Plugin\Controller;
 use Plenty\Plugin\Http\Request;
 use Plenty\Plugin\Http\Response;
-
+use Plenty\Plugin\Templates\Twig;
 
 use Plenty\Modules\Order\Models\Order;
 
 class SettingsController extends Controller
 {
 
-    public function loadSettings(Response $response)
-    {
-       // $query = $this->db->query(Order::class);
-        //$query->where('');
-        return $response->json(array("test" => 1), 200);
+//    public function loadSettings(Response $response)
+//    {
+//       // $query = $this->db->query(Order::class);
+//        //$query->where('');
+//        return $response->json(array("test" => 1), 200);
+//    }
+
+    public function loadSettings(Twig $twig) {
+        $twig->render("BeezUP.content.test");
     }
 
 }
