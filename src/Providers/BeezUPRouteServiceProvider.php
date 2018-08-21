@@ -8,17 +8,17 @@
 namespace BeezUP\Providers;
 //https://github.com/plentymarkets/plugin-payment-cash-in-advance
 
-use Plenty\Plugin\ServiceProvider;
-use Plenty\Plugin\Templates\Twig;
 
+use Plenty\Plugin\RouteServiceProvider;
+use Plenty\Plugin\Routing\Router;
 
-class BeezUPRouteServiceProvider
+class BeezUPRouteServiceProvider extends RouteServiceProvider
 {
 
     /**
      * @param Router $router
      */
-    public function map(Router $router , ApiRouter $apiRouter)
+    public function map(Router $router )
     {
 
         $router->get('order/beezup/settings', 'BeezUP\Controllers\SettingsController@loadSettings');
