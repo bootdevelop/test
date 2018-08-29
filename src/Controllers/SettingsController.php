@@ -8,7 +8,7 @@
 
 namespace BeezUP\Controllers;
 
-
+use Plenty\Plugin\Http\Request;
 use Plenty\Plugin\Controller;
 use Plenty\Plugin\Templates\Twig;
 
@@ -17,8 +17,9 @@ class SettingsController extends Controller
 {
 
 
-    public function loadSettings(Twig $twig) {
-        return $twig->render("BeezUP::Index");
+    public function loadSettings(Request $request): string {
+
+        return json_encode(array("test" => "test"));
     }
 
 }
