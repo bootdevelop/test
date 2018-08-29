@@ -21,7 +21,7 @@ class BeezUPRouteServiceProvider extends RouteServiceProvider
     public function map(Router $router )
     {
 
-        $router->get('beezup-settings', 'BeezUP\Controllers\SettingsController@loadSettings');
+        $router->get('beezup', 'BeezUP\Controllers\SettingsController@loadSettings');
     }
 
 }
