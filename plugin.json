@@ -5,7 +5,7 @@
   "namespace"       : "BeezUP",
   "author"          : "BeezUP",
   "keywords"        :["BeezUP", "marketplaces", "plugins"],
-  "type"            :"template",
+  "type"            :"general",
   "require"         :[],
   "serviceProvider" : "BeezUP\\Providers\\BeezUPServiceProvider"
 }
