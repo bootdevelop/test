@@ -6,7 +6,7 @@
       "label": "BeezUP",
       "menu": "start",
       "urlKey": "beezup-om",
-      "entryPoint": "index.html"
+      "entryPoint": "index.html?action=start"
     }
   ]
 }
